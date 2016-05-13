@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Bauhaus-93';
+    src: url('../fonts/bauhaus-93/bauhaus-93.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/bauhaus-93/bauhaus-93.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/bauhaus-93/bauhaus-93.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+html, body {
+	margin:0;
+    padding:0;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	
+	line-height: 1.5;
+	font-family: "Lucida Grande", Verdana;
+    font-size: 0.9em;
+}
+
+main {
+    line-height: 0.4;
+	flex: 1 0 auto;
+}
+
+/*LOGO*/
+.navbar-fixed .astronaut {
+    transform: translate(-114px, -218px) scale(0.1);
+}
+
+.navbar-fixed .left {
+    font-family: "Bauhaus-93";
+    font-size: 1.7em;
+}
+
+.logo {
+    top: 40%;
+    left: 10%;
+    height: 50%; 
+    position: relative;
+    transform: translateY(-50%); 
+}
+
+/*SLIDER*/
+.slider .indicators .indicator-item.active {
+    background-color: #8e24aa;
+}
+
+.slider {
+    margin-top: 3vh;
+    z-index: 99;
+}
+
+.flow-text {
+    margin: 10vh;
+    color: white;
+    font-size: 1.2em;
+}
+
+a {
+    color: white;
+}
+
+/*LOADER*/
+.progress-message {
+    text-align: center;
+    color: white;
+    z-index: 9;
+}
+
+/*MODAL ADD REFERENCE*/
+blockquote {
+    border-color: #8e24aa;
+}
+
+/*CANVAS*/
+#center-container {
+	height:100%;
+    width:100%;
+    position:absolute;
+    background-color:#1a1a1a;
+    color:#ccc;
+    top:0;
+}
+
+#infovis {
+    position:relative;
+    width:100%;
+    height:100%;
+    margin:auto;
+    overflow:hidden;
+}
+
+/*TOOLTIPS*/
+.tip {
+    color: #111;
+    width: 139px;
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+    font-size:10px;
+    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+    padding:7px;
+}

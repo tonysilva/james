@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="jamesApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="jamesApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="jamesApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="jamesApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>James</title>
+  <meta name="description" content="James is a tool that makes visible the entire universe of connections of JSON objects through a graph">
+  <meta name="keywords" content="json, graph, quickly, easily">
+  <meta name="author" content="https://br.linkedin.com/in/tonnysilva">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/astro.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <style type="text/css">
+      /**
+       * Hide when Angular is not yet loaded and initialized
+       */
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+      }
+    </style>
+</head>
+<body ng-controller="GraphCtrl" ng-cloak>
+
+  <header>
+    <div class="navbar-fixed">
+      <nav class="purple darken-1">
+        <div class="nav-wrapper">
+          <ul class="left">   
+            <li>
+              <a href="#!" class="left" ng-click="begin()">James</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li>
+              <a class="modal-trigger" data-target="addjson"><i class="large material-icons">input</i></a>
+            </li>            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div ng-hide="load" class="progress-message">
+    <div class="progress purple">
+      <div class="indeterminate purple lighten-2"></div>
+    </div>
+    <div class="astronaut"></div>
+    <p class="flow-text"><h5>Wait a moment, we are building your Json universe.</h5></p>
+  </div>
+
+  <div ng-show="load && !nodeCentral" class="slider">
+    <ul class="slides" ng-cloak>
+      <li>
+        <img src="images/space-first.jpg">
+        <div class="caption right-align">
+          <h3>Connections</h3>
+          <h5 class="light grey-text text-lighten-3">See the universe of Json connections</h5>
+        </div>
+      </li>
+      <li>
+        <img src="images/space-first.jpg">
+        <div class="caption left-align black-text">
+          <h3><b>Information</b></h3>
+          <h5 class="light black-text text-lighten-3"><b>View information of each Json object easily</b></h5>
+        </div>
+      </li>
+      <li>
+        <img src="images/space-first.jpg">
+        <div class="caption right-align">
+          <h3>Decisions</h3>
+          <h5 class="light grey-text text-lighten-3">Make decisions based on what you see</h5>
+        </div>
+      </li>
+    </ul>
+    <p class="flow-text">
+      <b>James</b> is a tool that makes visible the entire <b>universe of JSON objects connections</b> through a graph. This will help you see more easily how to Json is modeled. For example, based on the graph you can make decisions in order to improve the entire model. For you view the links of objects just click the top right button to enter a <a ng-href="http://json.org" target="_blank"><u>JSON</u></a> or <a ng-href="http://firebase.com" target="_blank"><u>Firebase</u></a> reference.<br>
+      <br>Learn more about this project:
+      <a ng-href="https://github.com/tonysilva/james" target="_blank"><i class="fa fa-fw fa-lg fa-github"></i></a>
+      <a ng-href="https://br.linkedin.com/in/tonnysilva" target="_blank"><i class="fa fa-fw fa-lg fa-linkedin-square"></i></a>
+    </p>
+  </div>
+
+  <main>
+    <div id="center-container">
+        <div id="infovis"></div>    
+    </div>
+    <div ng-show="nodeCentral" class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large waves-effect waves-light purple modal-trigger" data-target="nodetails">
+        <i class="material-icons">visibility</i>
+      </a>
+    </div>
+  </main>
+
+  <div id="addjson" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Add Reference</h4>
+      <form name="form" class="col s12" novalidate>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="jsonreference" placeholder="{'menu': {'id': 'file','value': 'File','popup': {'menuitem': 'New'} } }" class="materialize-textarea" ng-model="jsonReference" autofocus></textarea>
+            <label for="jsonreference">Json</label>
+          </div>  
+          <div class="input-field col s12">
+            <input id="firebasereference" placeholder="https://radiant-fire-xxxx.firebaseio.com/" ng-model="firebaseReference" type="text" class="validate" autocomplete="off">
+            <label for="firebasereference">or Firebase Reference</label>
+            <blockquote>
+              Remember: In Firebase Rules the node you want to view must is with read permission, example: ".read": true.
+            </blockquote>
+          </div>
+        </div>
+      </form>  
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-purple btn-flat" ng-click="startExtraction()">
+        <i class="large material-icons">done</i>
+      </a>
+    </div>
+  </div>
+
+  <div id="nodetails" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Central node - details</h4>
+      <table class="striped responsive-table">
+        <thead>
+          <tr>
+            <th data-field="id">Key</th>
+            <th data-field="name">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in nodeCentral" ng-if="key !== 'nodeId'">
+            <td>{{ key }}</td>
+            <td ng-if="value.object" ng-click="nextNode(value)"><a class="waves-effect waves-light purple btn">Object</a></td>
+            <td ng-if="!value.object">{{ value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat">Close</a>
+    </div>
+  </div>
+
+  <script src="bower_components/jit/Jit/jit.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/materialize/bin/materialize.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script src="app.js"></script>
+  <script src="graphC.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.modal-trigger').leanModal();
+    });
+    $('.slider').slider({full_width: true});
+  </script>
+</body>
+</html>
