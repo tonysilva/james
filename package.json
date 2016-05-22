@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "james",
   "private": false,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "version": "0.9.0",
+  "description": "A tool that makes visible the entire universe of JSON objects connections through a graph",
+  "repository": "http://james-graph.github.io",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",

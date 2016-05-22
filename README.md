@@ -27,13 +27,13 @@ Now you will see James is working in the **browser** - http://localhost:9000.
 
 Frameworks and toolkit used in this project:
 
-**AngularJS** (https://angularjs.org/)
+- AngularJS (https://angularjs.org/)
 
-**Materialize CSS** (http://materializecss.com/)
+- Materialize CSS (http://materializecss.com/)
 
-**Jit** (http://thejit.org)
+- Jit (http://thejit.org)
 
-A minimalist version of angular seed (https://github.com/angular/angular-seed) was used as the basis for this project.
+A minimalist version of [angular seed](https://github.com/angular/angular-seed) was used as the basis for this project.
 
 #Contributing to James
 
