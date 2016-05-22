@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'Bauhaus-93';
-    src: url('../fonts/bauhaus-93/bauhaus-93.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/bauhaus-93/bauhaus-93.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/bauhaus-93/bauhaus-93.ttf')  format('truetype'); /* Safari, Android, iOS */
+    src: url('fonts/bauhaus-93/bauhaus-93.eot'); /* IE9 Compat Modes */
+    src: url('fonts/bauhaus-93/bauhaus-93.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/bauhaus-93/bauhaus-93.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
 html, body {
@@ -11,9 +11,8 @@ html, body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	
-	line-height: 1.5;
-	font-family: "Lucida Grande", Verdana;
+
+	/*font-family: "Lucida Grande", Verdana;*/
     font-size: 0.9em;
 }
 
@@ -51,7 +50,7 @@ main {
 }
 
 .flow-text {
-    margin: 10vh;
+    margin: 9vh;
     color: white;
     font-size: 1.2em;
 }

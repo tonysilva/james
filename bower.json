@@ -12,5 +12,16 @@
     "firebase": "^2.4.2",
     "angularfire": "^1.2.0",
     "jit": "^2.0.2"
+  },
+  "appPath": "app",
+  "moduleName": "jamesApp",
+  "overrides": {
+    "materialize": {
+      "main": [
+        "sass/materialize.scss",
+        "dist/css/materialize.css",
+        "dist/js/materialize.js"
+      ]
+    }
   }
 }
