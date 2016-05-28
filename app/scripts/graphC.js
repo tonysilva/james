@@ -22,7 +22,7 @@ app.controller('GraphCtrl', function ($scope, $firebaseArray) {
 					var father = {
 						'id': 'root',
 						'name': 'ROOT',
-						'data': {'ROOT':nodesjson},
+						'data': nodesjson,
 						'children':[]
 					};
 					recursive(nodesjson, father);
@@ -60,7 +60,8 @@ app.controller('GraphCtrl', function ($scope, $firebaseArray) {
 		angular.forEach(root, function(value, id) {
 			if (typeof value === 'object' && typeof value !== undefined && !String(id).startsWith('$')) {
 				countItem = countItem + 1;
-				var name = String(id).startsWith('-') || (typeof id === 'number') ? countItem : id;
+				//var name = String(id).startsWith('-') || (typeof id === 'number') ? countItem : id;
+				var name = id;
 				var nodeId = randomString(6);
 				value.nodeId = nodeId;
 				var children = {
@@ -94,36 +95,9 @@ app.controller('GraphCtrl', function ($scope, $firebaseArray) {
 		  useGradients = nativeCanvasSupport;
 		  animate = !(iStuff || !nativeCanvasSupport);
 		})();
-	    
-	    //init nodetypes
-	    $jit.RGraph.Plot.NodeTypes.implement({
-	        //This node type is used for plotting pie-chart slices as nodes
-	        'nodepie': {
-	          'render': function(node, canvas) {
-	            var span = node.angleSpan, begin = span.begin, end = span.end;
-	            var polarNode = node.pos.getp(true);
-	            var polar = new $jit.Polar(polarNode.rho, begin);
-	            var p1coord = polar.getc(true);
-	            polar.theta = end;
-	            var p2coord = polar.getc(true);
 
-	            var ctx = canvas.getCtx();
-	            ctx.beginPath();
-	            ctx.moveTo(0, 0);
-	            ctx.lineTo(p1coord.x, p1coord.y);
-	            ctx.moveTo(0, 0);
-	            ctx.lineTo(p2coord.x, p2coord.y);
-	            ctx.moveTo(0, 0);
-	            ctx.arc(0, 0, polarNode.rho, begin, end, false);
-	            ctx.fill();
-	          }
-	        }
-	    });
-	    //end
-	    
-	    //init pie
-	    //This RGraph instance will be used as the node for another RGraph instance.
-	    var pie = new $jit.RGraph({
+	    //init rgraph
+	    rgraph = new $jit.RGraph({
 	        'injectInto': 'infovis',
 	        //Optional: create a background canvas and plot concentric circles in it.
 	        'background': {
@@ -131,30 +105,6 @@ app.controller('GraphCtrl', function ($scope, $firebaseArray) {
 	            strokeStyle: '#555'
 	          }
 	        },
-	        //Add node/edge styles and set
-	        //overridable=true if you want your styles to be individually overriden
-	        Node: {
-	            'overridable': true,
-	            'type':'nodepie'
-	        },
-	        Edge: {
-	            'type':'none'
-	        },
-	        //Parent-children distance
-	        levelDistance: 30,
-	        //Don't create labels in this visualization
-	        withLabels: false,
-	        //Don't clear the entire canvas when plotting this visualization
-	        clearCanvas: false
-	    });
-	    //load graph
-	    pie.loadJSON({});
-	    pie.compute();
-	    //end
-
-	    //init rgraph
-	    rgraph = new $jit.RGraph({
-	        useCanvas: pie.canvas,
 	        Node: {
 	            //set the RGraph rendering function as node type
 	            //'type': 'piechart'

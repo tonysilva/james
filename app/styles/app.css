@@ -50,9 +50,9 @@ main {
 }
 
 .flow-text {
-    margin: 9vh;
+    margin: 9vh 9vh 3vh 9vh;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 a {
@@ -75,7 +75,7 @@ blockquote {
 #center-container {
 	height:100%;
     width:100%;
-    position:absolute;
+    position:fixed;
     background-color:#1a1a1a;
     color:#ccc;
     top:0;
