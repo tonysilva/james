@@ -1,7 +1,7 @@
 {
   "name": "james",
   "private": false,
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A tool that makes visible the entire universe of JSON objects connections through a graph",
   "repository": "http://james-graph.github.io",
   "license": "MIT",
